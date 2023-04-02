@@ -1,0 +1,239 @@
+nav {
+    /* Position is fixed on the screen */
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 50px;
+    padding: 32px 10px;
+    transition: 0.3s;
+    /*Colours from :root in index.js*/
+    background-color: var(--invis-bg);
+    border-bottom: 5px solid var(--invis-bg);
+    display: flex;
+    justify-content: center;
+    /* opacity: 0; */
+}
+@media (max-width: 1000px) {
+    nav {
+        background-color: var(--main-dark-bg);
+        border-bottom: 5px solid var(--main-light-bg);   
+    }
+}
+
+.menu-title {
+    color:#ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+    white-space:nowrap;
+    font-size: 16px;
+    /* Small delay before animations are played */
+    transition: 0.3s;
+    user-select: none;
+}
+.menu-title:active, .menu-title:hover {
+    transform: translateX(5px);
+}
+
+/*Style h1 only if its in nav*/
+nav h1 {
+    color: #ffffff;
+    /*put all letters to uppercase*/
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 3px;
+    z-index: 99;
+}
+
+.nav-container {
+    position: relative;
+    max-width: 1500px;
+    height: 100%;
+    width: 100%;
+    /* Aligns all the items in the center incase of a big screen */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hamburger-menu {
+    display: block;
+    position: relative;
+    z-index: 98;
+    padding: 20px 20px;
+    /*Can't highlight the element*/
+    user-select: none;
+    /*Hide background and some other elements*/
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+    /*When mouse is hovering over, change to cursor*/
+    cursor: pointer;
+}
+/*Since we have three spans in index.html
+this will make a "homebrewn" hamburger menu*/
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 4px;
+    z-index: 98;
+    transform-origin: 0 0;
+    transition: 0.1s;
+    /*Make the spans unclickable to stop them from blocking*/
+    pointer-events: initial;
+    pointer-events: none;
+}
+/*When the hamburger is active*/
+.hamburger-menu.active span:nth-child(1) {
+    opacity: 0;
+}
+.hamburger-menu.active span:nth-child(2) {
+    background-color: var(--main-light-bg);
+}
+.hamburger-menu.active span:nth-child(3) {
+    opacity: 0;
+}
+
+.page-menu {
+    display: none;
+    flex: 1 1 0%;
+    justify-content:flex-end;
+    height: 40%;
+    width: 50%;
+    align-items: center;
+}
+.page-menu-item {
+    color:#ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+    /* Disable text wrapping */
+    white-space:nowrap;
+    padding: 10px 80px;
+    font-size: 16px;
+    /* Small delay before animations are played */
+    transition: 0.3s;
+    user-select: none;
+}
+.page-menu-item:hover {
+    color: var(--main-light-bg);
+    transform: translateX(1px);
+}
+.active-page {
+    color: var(--main-light-bg);
+    transform: translateX(1px);
+}
+/*Appears before the text*/
+.page-menu-item:before {
+    content: '{';
+    left: 40px;
+}
+/*Appears after the text*/
+.page-menu-item:after {
+    content: '}';
+    right: 40px;
+}
+/*Set the symbols to opacity 0 as default*/
+.page-menu-item:before, .page-menu-item:after {
+    position: absolute;
+    opacity: 0;
+}
+/*When hovering above the text, 
+the symbols before and after will become visible*/
+.page-menu-item:hover:before, .page-menu-item:hover:after {
+    opacity: 1;
+}
+
+#home-button {
+    display: block;
+}
+@media (max-width: 1200px) {
+    #home-button {
+        display: none;
+    }
+}
+@media (min-width: 700px) {
+    .page-menu-item {
+        padding: 10px 50px;
+    }
+}
+/*If the screen is larger than 1000px,
+larger than an ipad or phone*/
+@media (min-width: 1000px) {
+    nav {
+        padding: 25px 32px;
+        height: 80px;
+    }
+    nav h1 {
+        font-size: 21px;
+    }
+    .hamburger-menu {
+        display: none;
+    }
+    .page-menu {
+        display: flex;
+    }
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 69px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 1rem 1rem;
+    color: #ffffff;
+    background-color: #000f30;
+    opacity: 0;
+    transform: translateZ(100%);
+    transition: 0.3s;
+    pointer-events: initial;
+    pointer-events: none;
+}
+.mobile-menu.active {
+    opacity: 1;
+    transform: translateY(0);
+    /* Enable clicking */
+    pointer-events: initial;
+    pointer-events: all;
+}
+
+.mobile-menu-item {
+    display: block;
+    padding: 1.5rem;
+    color: #ffffff;
+    border-bottom: 10px;
+    border-color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.3s;
+}
+.mobile-menu-item:hover, .mobile-menu-item:active {
+    /* color: #ffffff; */
+    background-color: var(--main-light-bg);
+}
+.mobile-menu-item.active {
+    color: var(--main-light-bg);
+    transform: translateX(1px);
+}
+/*Push down the rest of the content while on mobile/ipad*/
+/*"The most permanent solutions are the temporary ones" -- someone*/
+#temp-fitter {
+    height:69px;
+}
+/*If it's biggar than 1000px*/
+@media (min-width: 1000px) {
+    .mobile-menu {
+        display: none;
+    }
+    #temp-fitter {
+        height:0;
+    }
+}

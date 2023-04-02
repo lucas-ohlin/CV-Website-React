@@ -1,0 +1,32 @@
+:root {
+	font-family: 'Fire sans', sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+
+	--invis-bg: #00122900;
+	--main-dark-bg: #001229;
+	--main-blend-bg: #1b3fa3;
+	--main-blend2-bg: #0d2e88;
+	--main-light-bg: #5eaae9;
+}
+
+* {
+	margin: 0;
+  	padding: 0;
+  	box-sizing: border-box;
+}
+
+body {
+	font-size: 14;
+	color: white;
+}
+
+.body::-webkit-scrollbar {
+    display: none;
+}
